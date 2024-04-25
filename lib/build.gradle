@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'com.amway.valuechain'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+
+
+
+
+repositories {
+    mavenCentral()
+     maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
+
+dependencies {
+    implementation(platform("software.amazon.awssdk:bom:2.21.1"))
+    implementation 'software.amazon.awssdk:dynamodb'
+    implementation 'software.amazon.awssdk:dynamodb-enhanced'
+     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
+     implementation 'com.amazonaws:aws-lambda-java-events:2.0.2'
+     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+     implementation 'io.github.resilience4j:resilience4j-core:1.7.1'
+     implementation 'io.github.resilience4j:resilience4j-circuitbreaker:1.7.1'
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
+    // annotation processors
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+}
+
+test {
+    useJUnitPlatform()
+}
